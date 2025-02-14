@@ -153,7 +153,7 @@ void argument();
 void print_parameters(FILE *outfile,char *argi,char *argo,int nt,char *argt,int argb,char *args,int argm,int argf,int argc, int argw, char *argn,char *arga, char *arge, double argg, char *argp,char *argd);
 char ARG_I[2048],ARG_O[2048],ARG_T[2048],ARG_P[2048],ARG_D[2048],ARG_S[2048],ARG_N[50],ARG_A[50],ARG_E[50];
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	FILE *fout, *fpdb,*matrixfile,*fpdbout,*fp,*ft;
 	conv_info convinfo;
@@ -887,7 +887,7 @@ for(i=nrl+1;i<=nrh;i++){
 return t;
 }
 
-int am2num_c(c)
+int am2num_c(int c)
 {
 switch (c) {
            	 case 'W':
@@ -977,7 +977,7 @@ return (c);
 }
 
 
-int am2num(c)
+int am2num(int c)
 {
 switch (c) {
            	 case 'W': case 'w':
@@ -1026,7 +1026,7 @@ switch (c) {
 return (c);
 }
 
-int am2numBZX(c)
+int am2numBZX(int c)
 {
 switch (c) {
                  case 'W': case 'w':
@@ -1110,8 +1110,7 @@ double effective_number_nogaps_expos(int **ali, int *marks, int n, int start, in
 
 
 
-static void *mymalloc(size)
-int size;
+static void *mymalloc(int size)
 {
 	void *buf;
 
@@ -1122,8 +1121,7 @@ int size;
 	return buf;
 }
 
-char *strsave(str)
-char *str;
+char *strsave(char* str)
 {
 	char *buf;
 	int l;
@@ -1134,9 +1132,7 @@ char *str;
 	return buf;
 }
 
-char *strnsave(str, l)
-char *str;
-int l;
+char *strnsave(char* str, int l)
 {
 	char *buf;
 
@@ -1146,9 +1142,7 @@ int l;
 	return buf;
 }
 
-static char **incbuf(n, was)
-int n;
-char **was;
+static char **incbuf(int n, char** was)
 {
 	char **buf;
 	char *aaa;
@@ -1162,8 +1156,7 @@ char **was;
 	return buf;
 }
 
-static int *incibuf(n, was)
-int n, *was;
+static int *incibuf(int n, int* was)
 {
 	int *ibuf;
 
@@ -1180,8 +1173,7 @@ void err_readali(int err_num)
 	fprintf(stderr,"Error with reading alignment: %d\n",err_num);
 }
 
-void readali(filename)
-char *filename;
+void readali(char* filename)
 {
 	FILE *fp;
 	char *s, *ss, *seqbuf;
